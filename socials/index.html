@@ -1,0 +1,372 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Vanilla's Socials</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+        --background: #090a10;
+        --card: #11131d;
+        --text: #f1f3ff;
+        --muted: #9da3ba;
+        --purple: #9b6cff;
+        --pink: #ff6fcf;
+        --blue: #6cc9ff;
+        --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        min-height: 4000px;
+
+        background:
+            radial-gradient(circle at 15% 10%, rgba(155, 108, 255, 0.15), transparent 30%),
+            radial-gradient(circle at 85% 80%, rgba(255, 111, 207, 0.10), transparent 30%),
+            var(--background);
+
+        color: var(--text);
+        font-family: 'Inter', sans-serif;
+
+        transition:
+            background 1.5s ease,
+            color 1.5s ease;
+    }
+
+    body.evil {
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255, 0, 0, 0.35), transparent 30%),
+            radial-gradient(circle at 80% 80%, rgba(120, 0, 0, 0.5), transparent 35%),
+            #160000;
+
+        color: #ffe5e5;
+    }
+
+    .container {
+        width: min(900px, 90%);
+        margin: auto;
+    }
+
+    header {
+        padding: 70px 0 35px;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 30px;
+
+        color: var(--muted);
+        text-decoration: none;
+
+        transition: color 0.3s ease;
+    }
+
+    .back:hover {
+        color: var(--text);
+    }
+
+    h1 {
+        margin: 0 0 15px;
+
+        font-size: clamp(3rem, 8vw, 5rem);
+        letter-spacing: -3px;
+
+        background: linear-gradient(
+            90deg,
+            var(--purple),
+            var(--pink),
+            var(--blue)
+        );
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        transition: filter 1s ease;
+    }
+
+    body.evil h1 {
+        background: linear-gradient(
+            90deg,
+            #ff3333,
+            #ff0000,
+            #7a0000
+        );
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        filter: drop-shadow(0 0 15px red);
+    }
+
+    .subtitle {
+        color: var(--muted);
+        font-size: 1.1rem;
+    }
+
+    .card {
+        margin-bottom: 25px;
+        padding: 30px;
+
+        border: 1px solid var(--border);
+        border-radius: 22px;
+
+        background: rgba(17, 19, 29, 0.75);
+
+        box-shadow:
+            0 15px 45px rgba(0, 0, 0, 0.2),
+            0 0 30px rgba(155, 108, 255, 0.04);
+
+        transition:
+            background 1s ease,
+            border-color 1s ease,
+            box-shadow 1s ease;
+    }
+
+    body.evil .card {
+        background: rgba(50, 0, 0, 0.75);
+        border-color: rgba(255, 0, 0, 0.5);
+
+        box-shadow:
+            0 0 35px rgba(255, 0, 0, 0.25),
+            inset 0 0 25px rgba(255, 0, 0, 0.08);
+    }
+
+    .intro {
+        font-size: 1.25rem;
+        line-height: 1.8;
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        margin: 16px 0;
+        padding: 18px;
+
+        border-radius: 14px;
+
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+
+        transition:
+            background 0.8s ease,
+            border-color 0.8s ease;
+    }
+
+    body.evil .social {
+        background: rgba(120, 0, 0, 0.3);
+        border-color: rgba(255, 0, 0, 0.35);
+    }
+
+    .social strong {
+        color: var(--text);
+    }
+
+    .social span {
+        color: var(--muted);
+    }
+
+    .evil-message {
+        margin-top: 1200px;
+        padding: 50px 20px;
+
+        text-align: center;
+
+        font-size: clamp(1.5rem, 5vw, 3rem);
+        font-weight: 800;
+        line-height: 2;
+
+        color: #ff2222;
+
+        text-shadow:
+            0 0 10px red,
+            0 0 25px red;
+
+        animation: evilPulse 1s infinite alternate;
+    }
+
+    @keyframes evilPulse {
+        from {
+            transform: scale(1);
+            text-shadow: 0 0 10px red;
+        }
+
+        to {
+            transform: scale(1.04);
+            text-shadow:
+                0 0 10px red,
+                0 0 35px red;
+        }
+    }
+
+    .evil-meows {
+        margin-top: 800px;
+        padding: 40px 10px;
+
+        text-align: center;
+
+        color: #ff1111;
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 2.2;
+
+        animation: shake 0.15s infinite alternate;
+    }
+
+    @keyframes shake {
+        from {
+            transform: translateX(-2px) rotate(-0.5deg);
+        }
+
+        to {
+            transform: translateX(2px) rotate(0.5deg);
+        }
+    }
+
+    .johnvertisement {
+        margin: 70px 0 40px;
+        padding: 8px;
+
+        border-radius: 16px;
+
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+
+        transition:
+            background 1s ease,
+            border-color 1s ease;
+    }
+
+    body.evil .johnvertisement {
+        background: rgba(80, 0, 0, 0.5);
+        border-color: red;
+    }
+
+    footer {
+        padding: 30px 0 45px;
+
+        text-align: center;
+        color: var(--muted);
+    }
+
+    body.evil footer {
+        color: #ff5555;
+    }
+
+    @media (max-width: 600px) {
+        header {
+            padding-top: 45px;
+        }
+
+        .card {
+            padding: 23px;
+        }
+
+        h1 {
+            letter-spacing: -2px;
+        }
+    }
+</style>
+
+</head><body><main class="container">
+
+    <header>
+        <a class="back" href="/">← back to home</a>
+
+        <h1>Socials</h1>
+
+        <p class="subtitle">
+            places where you can find me on the internet
+        </p>
+    </header>
+
+    <section class="card">
+
+        <p class="intro">
+            My socials.
+        </p>
+
+        <div class="social">
+            <strong>Discord username:</strong>
+            <span>vanillax12</span>
+        </div>
+
+        <div class="social">
+            <strong>GitHub username:</strong>
+            <span>vanillax12</span>
+        </div>
+
+        <p class="intro">
+            im not doing all this go away
+        </p>
+
+    </section>
+
+    <section class="card">
+
+        <p class="intro">
+            stop scrolling down
+        </p>
+
+    </section>
+
+    <div class="evil-message">
+        MEOW IM SO EVIL &gt;:333<br>
+        MEOW IM SO EVIL &gt;:333
+    </div>
+
+    <div class="evil-meows">
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW<br>
+        MEOW MEOW MEOW MEOW MEOW MEOW MEOW MEOW
+    </div>
+
+    <section class="johnvertisement">
+
+        <iframe
+            src="https://john.citrons.xyz/embed?ref=example.com"
+            style="margin-left:auto;display:block;margin-right:auto;max-width:732px;width:100%;height:94px;border:none;"
+            title="Johnvertisement">
+        </iframe>
+
+    </section>
+
+</main>
+
+<footer>
+    you should not have scrolled this far.
+</footer>
+
+<script>
+    const evilTrigger = 1200;
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > evilTrigger) {
+            document.body.classList.add("evil");
+        } else {
+            document.body.classList.remove("evil");
+        }
+    });
+</script>
+
+</body>
+  </html>
